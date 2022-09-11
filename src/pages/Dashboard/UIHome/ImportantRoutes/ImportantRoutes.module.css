@@ -1,0 +1,30 @@
+.reportContainer{
+    border-radius: 5px;
+    border: 5px solid rgb(247, 243, 253);
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+}
+
+.reports{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.routeTitle{
+    margin-top:0;
+    color:black;
+    font-weight:700;
+}
+
+.routeIcons{
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.reportContainer:hover .routeIcons {
+  transform: rotateY(360deg);
+}

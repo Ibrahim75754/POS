@@ -1,0 +1,72 @@
+[
+    {
+        "_id": 1,
+        "name": "Snacks",
+        "amount": 120,
+        "date": "2021-11-24",
+        "details": ""
+    },
+    {
+        "_id": 2,
+        "name": "Lunch",
+        "amount": 300,
+        "date": "2021-11-13",
+        "details": ""
+    },
+    {
+        "_id": 3,
+        "name": "Snacks",
+        "amount": 100,
+        "date": "2021-12-20",
+        "details": ""
+    },
+    {
+        "_id": 4,
+        "name": "Snacks",
+        "amount": 150,
+        "date": "2021-10-8",
+        "details": ""
+    },
+    {
+        "_id": 5,
+        "name": "Lunch",
+        "amount": 420,
+        "date": "2021-11-18",
+        "details": ""
+    },
+    {
+        "_id": 6,
+        "name": "Breakfast",
+        "amount": 80,
+        "date": "2021-11-30",
+        "details": ""
+    },
+    {
+        "_id": 7,
+        "name": "Breakfast",
+        "amount": 100,
+        "date": "2021-12-14",
+        "details": ""
+    },
+    {
+        "_id": 8,
+        "name": "Dinner",
+        "amount": 360,
+        "date": "2021-12-10",
+        "details": ""
+    },
+    {
+        "_id": 9,
+        "name": "Snacks",
+        "amount": 100,
+        "date": "2021-12-16",
+        "details": ""
+    },
+    {
+        "_id": 10,
+        "name": "Breakfast",
+        "amount": 70,
+        "date": "2021-12-16",
+        "details": ""
+    }
+]
