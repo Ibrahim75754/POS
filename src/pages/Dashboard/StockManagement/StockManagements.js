@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Button, Container, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import TablePagination from "@mui/material/TablePagination";
-import { Button, Container, TextField } from "@mui/material";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import styles from "./StockManagements.module.css";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProducts } from "../../../store/products";
+import styles from "./StockManagements.module.css";
 
 function Row(props) {
     const { product } = props;
@@ -43,7 +43,7 @@ function Row(props) {
                 </TableCell>
                 <TableCell align="center">{product.name}</TableCell>
                 <TableCell align="center">{product.category}</TableCell>
-                <TableCell align="center">{50}</TableCell>
+                <TableCell align="center">{product.quantity}</TableCell>
                 <TableCell align="center">{product.supplierPrice}</TableCell>
                 <TableCell align="center">{product.sellPrice}</TableCell>
             </TableRow>
@@ -95,15 +95,6 @@ const StockManagements = () => {
     const [open, setOpen] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-    // useEffect(() => {
-    //     fetch("https://zahidhasan2806.github.io/productData/products.json")
-    //         .then(res => res.json())
-    //         .then(data => {
-
-    //             setAllProducts(data)
-    //             setProductDisplayed(data)
-    //         })
-    // }, [])
 
     // Getting all product from store
     const allProducts = useSelector(

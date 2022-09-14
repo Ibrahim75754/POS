@@ -1,11 +1,11 @@
 import { Container, Grid, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { savePDF } from "@progress/kendo-react-pdf";
 import React, { useEffect, useRef } from 'react';
 import { Button, Table } from 'react-bootstrap';
-import logo from '../../../assets/images/logo2.png'
-import styles from "./CustomerInvoice.module.css";
-import { savePDF } from "@progress/kendo-react-pdf";
 import { Link, useParams } from 'react-router-dom';
+import logo from '../../../assets/images/logo2.png';
+import styles from "./CustomerInvoice.module.css";
 
 const CustomerInvoice = () => {
     const [orders, setOrders] = React.useState([]);
@@ -101,7 +101,7 @@ const CustomerInvoice = () => {
 
                         </TableContainer>
 
-                        <Typography sx={{ textAlign: "left", mt: 8, mb: 3, fontWeight: "bold" }}>Prepared By: Hasan Zahid</Typography>
+                        <Typography sx={{ textAlign: "left", mt: 8, mb: 3, fontWeight: "bold" }}>Prepared By: Md. Ibrahim Hossain</Typography>
 
                         <Typography sx={{ textAlign: "left" }}>Smart Shop | Dhaka,Bangladesh  <br /> https://smart-shop-pos.web.app </Typography>
 

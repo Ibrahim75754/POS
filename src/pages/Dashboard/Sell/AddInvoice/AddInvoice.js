@@ -1,42 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import styles from "./AddInvoice.module.css";
-import TextField from "@mui/material/TextField";
-import { Box, Button, Container } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import Delete from "@mui/icons-material/Delete";
 import MenuIcon from "@mui/icons-material/Menu";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
+import { Box, Button, Container } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Paper from "@mui/material/Paper";
+import Select from "@mui/material/Select";
+import Stack from "@mui/material/Stack";
+import Tab from "@mui/material/Tab";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import Paper from "@mui/material/Paper";
 import TableRow from "@mui/material/TableRow";
-import Delete from "@mui/icons-material/Delete";
-import { NavLink } from "react-router-dom";
-import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
-import Swal from "sweetalert2";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { saveInvoiceToDB } from "../../../../store/invoice";
+import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 import { loadCustomers } from "../../../../store/customer";
+import { saveInvoiceToDB } from "../../../../store/invoice";
 import { loadProducts } from "../../../../store/products";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+import styles from "./AddInvoice.module.css";
 
 const AddInvoice = () => {
   const dispatch = useDispatch();
   const [filteredProducts, setFilteredProducts] = useState("");
   const [tableRow, setTableRow] = useState(1);
   const [unit, setUnit] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [kg, setKg] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [paidAmount, setPaidAmount] = useState(0);
   const [value, setValue] = React.useState("Old Customer");
@@ -79,18 +79,50 @@ const AddInvoice = () => {
     return false;
   });
 
+  //me
+  // const product = allProducts.find(product => product.name === filteredProducts);
+  // const newProduct = { ...product, quantity: quantity - quantity }
+  // console.log(newProduct)
+
+  // const handleUpdate = () => {
+  const product = allProducts.find(product => product.name === filteredProducts);
+  const updateQuantity = product?.quantity - kg;
+  const newProduct = { ...product, quantity: updateQuantity }
+  console.log(newProduct);
+  //   fetch(`https://smart-shop-pos.herokuapp.com/products/${newProduct._id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(newProduct)
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+
+  //     })
+  // }
+
+
+
   const handleUnitChange = (event) => {
     setUnit(event.target.value);
   };
 
-  let total = quantity * productNames?.sellPrice;
-  let grandTotal = total - (Number(total) * Number(discount)) / 100;
+  let total = kg * productNames?.sellPrice;
+  let grandTotal = Number(total - (Number(total) * Number(discount)) / 100);
 
   const onSubmit = (data) => {
     data.payment = "unpaid";
     data.product = filteredProducts;
+
+
     //Send form data to Server
     dispatch(saveInvoiceToDB(data));
+
+
+    // dispatch(upadateProductToDb(newProduct));
+    // dispatch(deleteProductFromDb(newProduct._id));
+    // dispatch(saveProductToDb(newProduct));
 
     Swal.fire({
       position: "center",
@@ -100,6 +132,7 @@ const AddInvoice = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = "/payment-gateway";
+
       }
     });
     reset();
@@ -431,7 +464,7 @@ const AddInvoice = () => {
                         >
                           <input
                             {...register("quantity", { required: true })}
-                            onChange={(e) => setQuantity(e.target.value)}
+                            onChange={(e) => setKg(e.target.value)}
                             type="number"
                             placeholder="0"
                             className={`${styles.tableCellInput}`}

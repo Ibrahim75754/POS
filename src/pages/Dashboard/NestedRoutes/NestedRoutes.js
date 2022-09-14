@@ -2,12 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ManageTransaction from "../Accounts/ManageTransaction/ManageTransaction";
 import Payment from "../Accounts/Payment/Payment";
+import AddCategory from "../AddCategory/AddCategory";
 import AddExpense from "../AddExpense/AddExpense";
-import AddSupplier from "../AddSupplier/AddSupplier";
 import AddProduct from "../AddProduct/AddProduct";
+import AddSupplier from "../AddSupplier/AddSupplier";
+import AddCustomer from "../Customer/AddCustomer/AddCustomer";
 import CustomerManagement from "../Customer/CustomerManagement/CustomerManagement";
 import CustomerStatus from "../Customer/CustomerStatus/CustomerStatus";
-import AddCustomer from "../Customer/AddCustomer/AddCustomer";
 import Dashboard from "../Dashboard/Dashboard";
 import ExpenseItem from "../Expense/ExpenseItem";
 import AddEmployee from "../HRM/AddEmployee/AddEmployee";
@@ -29,16 +30,15 @@ import PurchaseReport from "../Report/PurchaseReport/PurchaseReport";
 import SalesReport from "../Report/SalesReport/SalesReport";
 import TodaysReport from "../Report/TodaysReport/TodaysReport";
 import AddInvoice from "../Sell/AddInvoice/AddInvoice";
-import AddCategory from "../AddCategory/AddCategory";
 import ManageInvoice from "../Sell/ManageInvoice/ManageInvoice";
 import PosInvoice from "../Sell/PosInvoice/PosInvoice";
 import StockManagements from "../StockManagement/StockManagements";
 import SupplierStock from "../SupplierStock/SupplierStock";
 //==============import your component here====================//
 // import TestComponent from "../TestComponent/TestComponent";
-import TestComponent from "../TestComponent/TestComponent";
 import EventCalender from "../EventCalender/EventCalender";
 import PurchaseProduct from "../Products/PurchaseProduct/PurchaseProduct";
+import TestComponent from "../TestComponent/TestComponent";
 import Unit from "../Unit/Unit";
 //==============import your component here===================//
 

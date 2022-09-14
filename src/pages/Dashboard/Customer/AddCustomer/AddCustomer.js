@@ -1,14 +1,15 @@
-import React from "react";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { Button, Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { Button, Container } from "@mui/material";
+import React from "react";
 import { useForm } from "react-hook-form";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import Swal from "sweetalert2";
-import styles from "./AddCustomer.module.css";
 import { useDispatch } from "react-redux";
-import { saveCustomerToDB } from "../../../../store/customer";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import { saveCustomerToDB } from "../../../../store/customer";
+
+import styles from "./AddCustomer.module.css";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,9 @@ const AddCustomer = () => {
     //Send form data to Server
     dispatch(saveCustomerToDB(customerData));
 
+
     Swal.fire("Good job!", "Customer Created Successfully!", "success");
+    console.log(customerData);
     reset();
   };
   return (

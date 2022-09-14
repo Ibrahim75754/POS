@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiCallBegan } from "./api";
 import Swal from "sweetalert2";
+import { apiCallBegan } from "./api";
 
 let initialState = {
   allProduct: [],
@@ -132,6 +132,14 @@ export const deleteProductFromDb = (id) =>
     url: `/products/${id}`,
     method: "delete",
     onSuccess: setDeleteProduct.type,
+  });
+
+export const upadateProductToDb = (data) =>
+  apiCallBegan({
+    url: `/products/${data._id}`,
+    data,
+    method: "put",
+    onSuccess: setUpdateProduct.type,
   });
 
 /* stored products load */

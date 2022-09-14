@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { Box, Button, Container, Typography } from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { Dropdown, InputGroup } from "react-bootstrap";
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Button, Container, Typography } from "@mui/material";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import styles from './AddProduct.module.css';
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Dropdown, InputGroup } from "react-bootstrap";
-import { saveProductToDb, selectedStoreProduct, loadStoreProducts } from '../../../store/products';
 import { loadCategories } from '../../../store/category';
+import { loadStoreProducts, saveProductToDb, selectedStoreProduct } from '../../../store/products';
+import styles from './AddProduct.module.css';
 
 
 const AddProduct = () => {
@@ -114,7 +114,7 @@ const AddProduct = () => {
                                                                     {product.name}
                                                                 </Dropdown.Item>
                                                             ))}
-                                                        }
+
                                                     </Dropdown.Menu>
                                                 </Dropdown>
                                             </div>

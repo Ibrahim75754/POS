@@ -16,21 +16,7 @@ import DashboardNavbar from "../UIHome/DashboardNavbar/DashboardNavbar";
 const drawerWidth = 270;
 
 const DashboardHome = (props) => {
-  //   const { user } = useAuth();
-  //   const [admin, setAdmin] = React.useState(false);
-  //   const [loading, setLoading] = React.useState(false);
-  //   const email = sessionStorage.getItem("email");
 
-  // React.useEffect(() => {
-  //     setLoading(true);
-  //     fetch(`https://mighty-savannah-90389.herokuapp.com/users/${email}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setAdmin(data.admin);
-  //         sessionStorage.setItem("admin", data.admin);
-  //         setLoading(false);
-  //       });
-  //   }, [email]);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
