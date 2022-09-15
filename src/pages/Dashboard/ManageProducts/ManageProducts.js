@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Swal from "sweetalert2";
-import { Box, Button, Container, Collapse, IconButton, Paper, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography } from "@mui/material";
-import Table from "@mui/material/Table";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import Delete from "@mui/icons-material/Delete";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import Delete from "@mui/icons-material/Delete";
-import styles from './ManageProducts.module.css';
-import { loadProducts, deleteProductFromDb, setReload } from '../../../store/products';
+import { Box, Button, Collapse, Container, IconButton, Paper, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography } from "@mui/material";
+import Table from "@mui/material/Table";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import { deleteProductFromDb, loadProducts, setReload } from '../../../store/products';
+import styles from './ManageProducts.module.css';
 
 function Row(props) {
     const { product, serial, reload } = props;
@@ -56,20 +56,15 @@ function Row(props) {
                 <TableCell align="center">{product.category}</TableCell>
                 {/* <TableCell align="center">{product.price}</TableCell> */}
                 <TableCell align="center">{product.sellPrice}</TableCell>
-                <TableCell align="center">
+                {/* <TableCell align="center">
                     <img
                         style={{ width: "70px", height: "70px" }}
                         src={product.img}
                         alt="Product"
                     // loading="lazy"
                     />
-                    {/* <img
-                        style={{ width: "70px", height: "70px" }}
-                        src={`data:image/jpeg;base64,${product.img}`}
-                        alt="Product"
-                    // loading="lazy"
-                    /> */}
-                </TableCell>
+                    
+                </TableCell> */}
                 <TableCell align="center">
                     <Delete
                         onClick={() => handleDelete(product?._id)}
@@ -90,8 +85,8 @@ function Row(props) {
                                         <TableCell align="center">Product ID</TableCell>
                                         <TableCell align="center">Name</TableCell>
                                         <TableCell align="center">Category</TableCell>
-                                        <TableCell align="center">Unit</TableCell>
-                                        <TableCell align="center">Supplier Price</TableCell>
+                                        {/* <TableCell align="center">Unit</TableCell>
+                                        <TableCell align="center">Supplier Price</TableCell> */}
                                         <TableCell align="center">Sell Price</TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -102,8 +97,8 @@ function Row(props) {
                                         </TableCell>
                                         <TableCell align="center">{product.name}</TableCell>
                                         <TableCell align="center">{product.category}</TableCell>
-                                        <TableCell align="center">{product.unit}</TableCell>
-                                        <TableCell align="center">BDT {product.supplierPrice}</TableCell>
+                                        {/* <TableCell align="center">{product.unit}</TableCell> */}
+                                        {/* <TableCell align="center">BDT {product.supplierPrice}</TableCell> */}
                                         <TableCell align="center">BDT {product.sellPrice}</TableCell>
                                     </TableRow>
                                 </TableBody>
@@ -125,6 +120,7 @@ const ManageProducts = () => {
 
     let reload = useSelector((state) => state.entities.products.reload);
     const products = useSelector((state) => state.entities.products.allProduct);
+    console.log(products)
 
     useEffect(() => {
         dispatch(loadProducts());
@@ -219,9 +215,9 @@ const ManageProducts = () => {
                                 {/* <TableCell align="center" className={`${styles.tableCell}`}>
                                     Sale Price
                                 </TableCell> */}
-                                <TableCell align="center" className={`${styles.tableCell}`}>
+                                {/* <TableCell align="center" className={`${styles.tableCell}`}>
                                     Image
-                                </TableCell>
+                                </TableCell> */}
                                 <TableCell align="center" className={`${styles.tableCell}`}>
                                     Action
                                 </TableCell>

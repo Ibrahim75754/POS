@@ -115,7 +115,7 @@ export const saveProductToDb = (data) =>
 // Load product form Database
 export const loadProducts = () =>
   apiCallBegan({
-    url: "/stores",
+    url: "/products",
     onStart: productRequested.type,
     onSuccess: productReceived.type,
     onFailed: productRequestedFailed.type,
