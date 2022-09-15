@@ -88,19 +88,19 @@ const StockManagements = () => {
     // const [allProducts, setAllProducts] = React.useState([]);
     const [open, setOpen] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-
-    // Getting all product from store
-    const allProducts = useSelector(
-        (state) => state.entities.products.allProduct
-    );
-    const [productDisplayed, setProductDisplayed] = React.useState(allProducts);
     // Load products from Database
     useEffect(() => {
         dispatch(loadStoreProducts());
-    }, [dispatch, allProducts]);
+    }, []);
+
+    // Getting all product from store
+    const storeProducts = useSelector(
+        (state) => state.entities.products.storeProducts
+    );
+    const [productDisplayed, setProductDisplayed] = React.useState(storeProducts);
 
 
+    console.log(storeProducts);
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -111,9 +111,9 @@ const StockManagements = () => {
     };
 
     const handleProductSearch = (event) => {
-        event.preventDefault()
-        const matchedProduct = allProducts.filter(product => product.name.toLowerCase().includes(inputValue.toLowerCase()));
+        const matchedProduct = storeProducts.filter(product => product.p_name.toLowerCase().includes(inputValue.toLowerCase()));
         setProductDisplayed(matchedProduct);
+        event.preventDefault()
 
     }
 
@@ -183,7 +183,7 @@ const StockManagements = () => {
                     sx={{ mt: 3 }}
                     rowsPerPageOptions={[5, 10, 15]}
                     component="div"
-                    count={allProducts.length}
+                    count={storeProducts.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
