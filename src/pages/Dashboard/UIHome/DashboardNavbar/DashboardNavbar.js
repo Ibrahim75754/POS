@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
-import Typography from "@mui/material/Typography";
-import defaultUser from "../../../../assets/images/user.png";
-import { NavDropdown } from "react-bootstrap";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import Badge from "@mui/material/Badge";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import styles from "./DashboardNavbar.module.css";
-import LogoutIcon from "@mui/icons-material/Logout";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import AddIcon from "@mui/icons-material/Add";
-import { NavLink } from "react-router-dom";
-import { Modal, Row, Col } from "react-bootstrap";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Box, Button } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import React, { useEffect } from "react";
+import { Col, Modal, NavDropdown, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import defaultUser from "../../../../assets/images/user.png";
 import useAuth from "../../../../hooks/useAuth";
 import { loadEmployees } from "../../../../store/employee";
-import { useDispatch, useSelector } from "react-redux";
+import styles from "./DashboardNavbar.module.css";
 
 const DashboardNavbar = () => {
   const { employee, logOut } = useAuth();
+  console.log(employee)
   const dispatch = useDispatch();
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
@@ -45,17 +42,10 @@ const DashboardNavbar = () => {
     minute: "numeric",
   });
 
-  const employees = useSelector(
-    (state) => state.entities.employee.allEmployees
-  );
-
   // Load all designations from Database
   useEffect(() => {
     dispatch(loadEmployees());
   }, [dispatch]);
-
-
-  const setEmployee = employees.find(filteredEmployee => filteredEmployee.email === employee.email);
 
 
   // const [notification, setNotification] = useState([]);
@@ -92,12 +82,6 @@ const DashboardNavbar = () => {
           {" "}
           <AddIcon sx={{ color: "#0d6efd" }}> </AddIcon>
         </NavLink>
-        {/* <Badge color="error" badgeContent={notification.length} max={10}>
-          <NotificationsNoneIcon
-            sx={{ color: "#0d6efd" }}
-            className={`${styles.usersProfileDropdown}`}
-          />
-        </Badge> */}
 
         <div>
           <NavDropdown
@@ -105,43 +89,6 @@ const DashboardNavbar = () => {
             className={`${styles.usersProfileDropdown}`}
           >
             <div className={`${styles.alldropdownItems}`}>
-              <NavDropdown.Item className={`${styles.usersDPDropdown}`}>
-                <div className="mx-3 text-center">
-                  {employee ?
-                    <img
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "50%",
-                        border: "1px solid gray",
-                      }}
-                      // src={setEmployee?.image}
-                      src={`data:image/*;base64,${setEmployee?.image}`}
-                      alt=""
-                    />
-                    :
-                    <img
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        borderRadius: "50%",
-                        border: "1px solid gray",
-                        marginTop: "10px",
-                      }}
-                      src={defaultUser}
-                      alt=""
-                    />
-                  }
-                </div>
-              </NavDropdown.Item>
-              <hr />
-              <NavDropdown.Item className={`${styles.usersDropdown}`}>
-                <PersonOutlineIcon sx={{ marginRight: "10px" }} />
-                <span className="">
-                  {" "}
-                  {setEmployee?.name} |  {setEmployee?.designation}
-                </span>
-              </NavDropdown.Item>
 
               <NavDropdown.Item
                 onClick={handleShow}
@@ -152,17 +99,6 @@ const DashboardNavbar = () => {
               </NavDropdown.Item>
               <hr />
               <NavDropdown.Item className={`${styles.usersDropdown}`}>
-                {/* {user.email ? (
-                                <Button onClick={logOut} className="btn_regular">
-                                    Log Out
-                                </Button>
-                            ) : (
-                                <Link to="/login">
-                                    <Button className="btn_regular" color="inherit">
-                                        Login
-                                    </Button>
-                                </Link>
-                            )} */}
                 <NavLink
                   style={{ textDecoration: "none", marginTop: "0 !important" }}
                   to="/"
@@ -199,7 +135,7 @@ const DashboardNavbar = () => {
                   marginBottom: "30px",
                 }}
               >
-                AFSANA MEEM
+                Ibrahim Hossain
               </h4>
               {true && (
                 <div className="mx-3 text-center border border-1 p-3">

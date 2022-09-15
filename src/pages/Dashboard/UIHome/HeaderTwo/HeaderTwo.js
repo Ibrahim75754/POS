@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Modal, Row, Col } from "react-bootstrap";
-import styles from "./HeaderTwo.module.css";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import defaultUser from "../../../../assets/images/user.png";
-import { Button } from "@mui/material";
-import PreviewIcon from "@mui/icons-material/Preview";
 import ChatIcon from "@mui/icons-material/Chat";
+import PreviewIcon from "@mui/icons-material/Preview";
+import { Button } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import React, { useEffect, useState } from "react";
+import { Col, Modal, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import defaultUser from "../../../../assets/images/user.png";
 import useAuth from "../../../../hooks/useAuth";
 import { loadEmployees } from "../../../../store/employee";
-import { useDispatch, useSelector } from "react-redux";
+import styles from "./HeaderTwo.module.css";
 
 const HeaderTwo = () => {
   const dispatch = useDispatch();
@@ -26,17 +26,11 @@ const HeaderTwo = () => {
       .then(data => setNotification(data))
   }, [notification]);
 
-  const employees = useSelector(
-    (state) => state.entities.employee.allEmployees
-  );
 
   // Load all designations from Database
   useEffect(() => {
     dispatch(loadEmployees());
   }, [dispatch]);
-
-
-  const setEmployee = employees.find(filteredEmployee => filteredEmployee.email === employee.email);
 
   return (
     <div className={`${styles.navContainer} ${"shadow"}`}>
@@ -54,7 +48,7 @@ const HeaderTwo = () => {
                     border: "1px solid rgb(65, 65, 65)",
                   }}
                   // src={setEmployee?.image}
-                  src={`data:image/*;base64,${setEmployee?.image}`}
+                  src={defaultUser}
                   alt=""
                 />
                 :
@@ -85,7 +79,7 @@ const HeaderTwo = () => {
           }}
         >
           <Box sx={{ textAlign: "start" }}>
-            <h4>Welcome Back! {setEmployee?.name}</h4>
+            <h4>Welcome Back! Admin</h4>
             <p>You have <span className="text-white">{notification.length}</span> new events! Check it out!</p>
           </Box>
         </Grid>
@@ -141,7 +135,7 @@ const HeaderTwo = () => {
                       height: "150px",
                     }}
                     className="img-fluid"
-                    src={`data:image/*;base64,${setEmployee?.image}`}
+                    src={defaultUser}
                     alt=""
                   />
                 ) : (
@@ -182,7 +176,7 @@ const HeaderTwo = () => {
                 Designation
                 <span className={`${styles.employeeInfo}`}>
                   <br />
-                  {setEmployee?.designation}
+
                 </span>
                 <hr />
               </h6>
@@ -190,7 +184,7 @@ const HeaderTwo = () => {
               <h6 className={`${styles.employeeTitle}`}>
                 Employee ID
                 <span className={`${styles.employeeInfo}`}>
-                  <br />   {setEmployee?.employeeId}
+                  <br />
                 </span>
                 <hr />
               </h6>
@@ -199,7 +193,7 @@ const HeaderTwo = () => {
                 Email
                 <span className={`${styles.employeeInfo}`}>
                   <br />
-                  {setEmployee?.email}
+
                 </span>
                 <hr />
               </h6>
@@ -208,7 +202,7 @@ const HeaderTwo = () => {
                 Phone
                 <span className={`${styles.employeeInfo}`}>
                   <br />
-                  {setEmployee?.phone}
+
                 </span>
               </h6>
             </Col>
