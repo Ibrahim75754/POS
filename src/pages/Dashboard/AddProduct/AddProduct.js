@@ -29,12 +29,13 @@ const AddProduct = () => {
 
     const [selectPd, setSelectPd] = useState("--- select product ---");
 
-    const handleProductSelect = (_id, name) => {
+    const handleProductSelect = (_id, p_name) => {
         dispatch(selectedStoreProduct(_id));
-        setSelectPd(name);
+        setSelectPd(p_name);
     };
 
     const singleProduct = useSelector((state) => state.entities.products.singleStoreProduct);
+    console.log(singleProduct)
 
     const onSubmit = (data) => {
         data.name = selectPd;
@@ -107,11 +108,11 @@ const AddProduct = () => {
                                                     <Dropdown.Menu>
                                                         {
                                                             products.map(product => (
-                                                                <Dropdown.Item key={product._id} value={product?.name} onClick={() => {
-                                                                    handleProductSelect(product._id, product.name);
+                                                                <Dropdown.Item key={product._id} value={product?.p_name} onClick={() => {
+                                                                    handleProductSelect(product._id, product.p_name);
                                                                 }}
                                                                 >
-                                                                    {product.name}
+                                                                    {product.p_name}
                                                                 </Dropdown.Item>
                                                             ))}
 
@@ -134,7 +135,7 @@ const AddProduct = () => {
                                                     type="text"
                                                     className="form-control"
                                                     placeholder="Product ID"
-                                                    defaultValue={singleProduct?.productId}
+                                                    defaultValue={singleProduct?.p_id}
                                                     style={{ background: "#E5E5E5" }}
                                                     {...register("productId", { required: false })}
 
@@ -211,7 +212,7 @@ const AddProduct = () => {
                                                         type="number"
                                                         className="form-control"
                                                         placeholder="Available in Stock"
-                                                        defaultValue={singleProduct?.storeQuantity}
+                                                        defaultValue={singleProduct?.quantity}
                                                         style={{ background: "#E5E5E5", borderRadius: '4px 0 0 4px' }}
                                                         {...register("storeQuantity", { required: false })}
                                                         readOnly
@@ -267,7 +268,7 @@ const AddProduct = () => {
                                                     type="number"
                                                     className="form-control"
                                                     placeholder="Supplier Price"
-                                                    defaultValue={singleProduct?.supplierPrice}
+                                                    defaultValue={singleProduct?.rate}
                                                     style={{ background: "#E5E5E5" }}
                                                     {...register("supplierPrice", { required: false })}
                                                 />
