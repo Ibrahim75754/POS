@@ -16,7 +16,7 @@ import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadProducts } from "../../../store/products";
+import { loadStoreProducts } from "../../../store/products";
 import styles from "./StockManagements.module.css";
 
 function Row(props) {
@@ -41,11 +41,9 @@ function Row(props) {
                 <TableCell component="th" scope="row">
                     {product._id}
                 </TableCell>
-                <TableCell align="center">{product.name}</TableCell>
-                <TableCell align="center">{product.category}</TableCell>
+                <TableCell align="center">{product.p_name}</TableCell>
                 <TableCell align="center">{product.quantity}</TableCell>
-                <TableCell align="center">{product.supplierPrice}</TableCell>
-                <TableCell align="center">{product.sellPrice}</TableCell>
+                <TableCell align="center">{product.rate}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -66,13 +64,9 @@ function Row(props) {
                                 <TableBody>
                                     <TableRow key={product._id}>
                                         <TableCell component="th" scope="row">
-                                            {product.name}
+                                            {product.p_name}
                                         </TableCell>
                                         <TableCell align="center">{product.category}</TableCell>
-                                        <TableCell align="center"><img
-                                            style={{ width: "70px", height: "70px" }}
-                                            src={product.img}
-                                            alt="Product" /></TableCell>
                                         <TableCell align="left">{product.description}</TableCell>
                                     </TableRow>
                                 </TableBody>
@@ -103,7 +97,7 @@ const StockManagements = () => {
     const [productDisplayed, setProductDisplayed] = React.useState(allProducts);
     // Load products from Database
     useEffect(() => {
-        dispatch(loadProducts());
+        dispatch(loadStoreProducts());
     }, [dispatch, allProducts]);
 
 
@@ -165,9 +159,7 @@ const StockManagements = () => {
                                 <TableCell align="center" className={`${styles.tableCell}`}>
                                     Products    Name
                                 </TableCell>
-                                <TableCell align="center" className={`${styles.tableCell}`}>
-                                    Category
-                                </TableCell>
+
                                 <TableCell align="center" className={`${styles.tableCell}`}>
                                     Available Quantity
                                 </TableCell>
@@ -175,9 +167,7 @@ const StockManagements = () => {
                                 <TableCell align="center" className={`${styles.tableCell}`}>
                                     Supplier Price
                                 </TableCell>
-                                <TableCell align="center" className={`${styles.tableCell}`}>
-                                    Sale Price
-                                </TableCell>
+
                             </TableRow>
                         </TableHead>
                         <TableBody>
