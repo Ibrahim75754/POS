@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import styles from "./PurchaseProduct.module.css";
-import TextField from "@mui/material/TextField";
-import { Box, Button, Container } from "@mui/material";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import Typography from "@mui/material/Typography";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import Delete from "@mui/icons-material/Delete";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Box, Button, Container } from "@mui/material";
+import Collapse from "@mui/material/Collapse";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Paper from "@mui/material/Paper";
+import Select from "@mui/material/Select";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import Paper from "@mui/material/Paper";
 import TableRow from "@mui/material/TableRow";
-import Delete from "@mui/icons-material/Delete";
-import Collapse from "@mui/material/Collapse";
-import Swal from "sweetalert2";
-import { NavLink } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { saveSupplierToDB } from "../../../../store/supplier";
+import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 import { saveProductsToStore } from "../../../../store/products";
+import { saveSupplierToDB } from "../../../../store/supplier";
+import styles from "./PurchaseProduct.module.css";
 
 const PurchaseProduct = () => {
   const dispatch = useDispatch();
@@ -89,6 +89,7 @@ const PurchaseProduct = () => {
       total: quantity * rate - discount,
     };
     setProducts([...products, newProduct]);
+    console.log(products)
   };
 
   const handleLastProduct = () => {
@@ -105,7 +106,6 @@ const PurchaseProduct = () => {
     };
     setProducts([...products, newProduct]);
   };
-
 
 
   const {
@@ -130,7 +130,10 @@ const PurchaseProduct = () => {
       barcode,
       contactNo,
       date,
-      products: products,
+      p_id: productId,
+      qty: quantity,
+      unit: unit,
+      rate: rate,
       totalDiscount: totalDiscount,
       grandTotal: grandTotal,
       paidAmount: paidAmount,

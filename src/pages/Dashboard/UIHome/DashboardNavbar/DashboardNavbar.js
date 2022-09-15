@@ -15,7 +15,6 @@ import styles from "./DashboardNavbar.module.css";
 
 const DashboardNavbar = () => {
   const { employee, logOut } = useAuth();
-  console.log(employee)
   const dispatch = useDispatch();
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
