@@ -54,7 +54,7 @@ function Row(props) {
                 </TableCell>
                 <TableCell align="center">{product.name}</TableCell>
                 <TableCell align="center">{product.category}</TableCell>
-                {/* <TableCell align="center">{product.price}</TableCell> */}
+                <TableCell align="center">{product.quantity}</TableCell>
                 <TableCell align="center">{product.sellPrice}</TableCell>
                 {/* <TableCell align="center">
                     <img
@@ -85,8 +85,8 @@ function Row(props) {
                                         <TableCell align="center">Product ID</TableCell>
                                         <TableCell align="center">Name</TableCell>
                                         <TableCell align="center">Category</TableCell>
-                                        {/* <TableCell align="center">Unit</TableCell>
-                                        <TableCell align="center">Supplier Price</TableCell> */}
+                                        {/* <TableCell align="center">Unit</TableCell>*/}
+                                        <TableCell align="center">Quantity</TableCell>
                                         <TableCell align="center">Sell Price</TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -98,7 +98,7 @@ function Row(props) {
                                         <TableCell align="center">{product.name}</TableCell>
                                         <TableCell align="center">{product.category}</TableCell>
                                         {/* <TableCell align="center">{product.unit}</TableCell> */}
-                                        {/* <TableCell align="center">BDT {product.supplierPrice}</TableCell> */}
+                                        <TableCell align="center">{product.quantity}</TableCell>
                                         <TableCell align="center">BDT {product.sellPrice}</TableCell>
                                     </TableRow>
                                 </TableBody>
@@ -208,6 +208,9 @@ const ManageProducts = () => {
                                 </TableCell>
                                 <TableCell align="center" className={`${styles.tableCell}`}>
                                     Category
+                                </TableCell>
+                                <TableCell align="center" className={`${styles.tableCell}`}>
+                                    Quantity
                                 </TableCell>
                                 <TableCell align="center" className={`${styles.tableCell}`}>
                                     Price

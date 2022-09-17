@@ -55,6 +55,7 @@ const AddProduct = () => {
 
         dispatch(saveProductToDb(formData));
         Swal.fire("Success", "New Product Added for Sell", "success");
+        // dispatch(update)
 
         setSelectPd('--- select product ---');
 

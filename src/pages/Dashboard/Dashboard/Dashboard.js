@@ -1,11 +1,9 @@
 import React from "react";
 import Charts from "../Charts/Charts";
 import ConversionRate from "../ConversionRate/ConversionRate";
-import OrderTimeline from "../OrderTimeline/OrderTimeline";
 import HeaderTwo from "../UIHome/HeaderTwo/HeaderTwo";
 import ImportantRoutes from "../UIHome/ImportantRoutes/ImportantRoutes";
 import TotalReports from "../UIHome/TotalReports/TotalReports";
-import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   return (
