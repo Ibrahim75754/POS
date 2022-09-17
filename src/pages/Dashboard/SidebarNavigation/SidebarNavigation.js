@@ -4,7 +4,6 @@ import Filter1Icon from "@mui/icons-material/Filter1";
 import Filter2Icon from "@mui/icons-material/Filter2";
 import Filter3Icon from "@mui/icons-material/Filter3";
 import Filter4Icon from "@mui/icons-material/Filter4";
-import Filter5Icon from "@mui/icons-material/Filter5";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PersonIcon from "@mui/icons-material/Person";
@@ -187,22 +186,7 @@ const SidebarNavigation = () => {
                   Category
                 </Button>
               </NavLink>
-              {/* <NavLink
-                style={{ textDecoration: "none", marginTop: "0 !important" }}
-                to={`/dashboard/manage-unit`}
-              >
-                <Button
-                  sx={{
-                    color: "#fff !important",
-                    textTransform: "capitalize",
-                    fontWeight: "700",
-                    fontSize: "12px",
-                  }}
-                >
-                  <Filter2Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Manage
-                  Unit
-                </Button>
-              </NavLink> */}
+
               <NavLink
                 style={{ textDecoration: "none", marginTop: "0 !important" }}
                 to={`/dashboard/purchase-product`}
@@ -526,41 +510,10 @@ const SidebarNavigation = () => {
                   }}
                 >
                   <Filter1Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Stock
-                  Report
+                  Details
                 </Button>
               </NavLink>
-              <NavLink
-                style={{ textDecoration: "none", marginTop: "0 !important" }}
-                to={`/dashboard/supplier-stock-report`}
-              >
-                <Button
-                  sx={{
-                    color: "#fff !important",
-                    textTransform: "capitalize",
-                    fontWeight: "700",
-                    fontSize: "12px",
-                  }}
-                >
-                  <Filter2Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Stock
-                  Report (Supplier)
-                </Button>
-              </NavLink>
-              <NavLink
-                style={{ textDecoration: "none", marginTop: "0 !important" }}
-                to={`/dashboard/product-stock-report`}
-              >
-                <Button
-                  sx={{
-                    color: "#fff !important",
-                    textTransform: "capitalize",
-                    fontWeight: "700",
-                    fontSize: "12px",
-                  }}
-                >
-                  <Filter3Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Stock
-                  Report (Product)
-                </Button>
-              </NavLink>
+
             </AccordionDetails>
           </Accordion>
           {/*======= Stock Nav Menu End ======*/}
@@ -630,7 +583,7 @@ const SidebarNavigation = () => {
                   }}
                 >
                   <Filter2Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Sales
-                  Report (Product)
+                  Report
                 </Button>
               </NavLink>
               <NavLink
@@ -646,41 +599,10 @@ const SidebarNavigation = () => {
                   }}
                 >
                   <Filter3Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Profit
-                  Report (Invoice)
-                </Button>
-              </NavLink>
-              <NavLink
-                style={{ textDecoration: "none", marginTop: "0 !important" }}
-                to={`/dashboard/today-report`}
-              >
-                <Button
-                  sx={{
-                    color: "#fff !important",
-                    textTransform: "capitalize",
-                    fontWeight: "700",
-                    fontSize: "12px",
-                  }}
-                >
-                  <Filter4Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Todays
                   Report
                 </Button>
               </NavLink>
-              <NavLink
-                style={{ textDecoration: "none", marginTop: "0 !important" }}
-                to={`/dashboard/sales-report`}
-              >
-                <Button
-                  sx={{
-                    color: "#fff !important",
-                    textTransform: "capitalize",
-                    fontWeight: "700",
-                    fontSize: "12px",
-                  }}
-                >
-                  <Filter5Icon sx={{ mr: 1, ml: 1, color: "yellow" }} /> Sales
-                  Report
-                </Button>
-              </NavLink>
+
             </AccordionDetails>
           </Accordion>
           {/*======= Report Nav Menu End ======*/}
