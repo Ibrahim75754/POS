@@ -28,7 +28,7 @@ import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { loadCustomers } from "../../../../store/customer";
 import { saveInvoiceToDB } from "../../../../store/invoice";
-import { loadProducts } from "../../../../store/products";
+import { loadProducts, upadateProductToDb } from "../../../../store/products";
 import styles from "./AddInvoice.module.css";
 
 const AddInvoice = () => {
@@ -79,31 +79,6 @@ const AddInvoice = () => {
     }
     return false;
   });
-  console.log(productNames)
-  //me
-  // const product = allProducts.find(product => product.name === filteredProducts);
-  // const newProduct = { ...product, quantity: quantity - quantity }
-  // console.log(newProduct)
-
-  const handleUpdate = () => {
-    const product = allProducts.find(product => product.name === filteredProducts);
-    const updateQuantity = product?.quantity - kg;
-    const newProduct = { ...product, quantity: updateQuantity }
-    console.log(newProduct);
-    //   fetch(`https://smart-shop-pos.herokuapp.com/products/${newProduct._id}`, {
-    //     method: 'PUT',
-    //     headers: {
-    //       'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(newProduct)
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-
-    //     })
-  }
-
-
 
   const handleUnitChange = (event) => {
     setUnit(event.target.value);
@@ -116,19 +91,22 @@ const AddInvoice = () => {
     data.payment = "unpaid";
     data.product = filteredProducts;
 
-
+    console.log(data)
     //Send form data to Server
     dispatch(saveInvoiceToDB(data));
 
-
-    // dispatch(upadateProductToDb(newProduct));
-    // dispatch(deleteProductFromDb(newProduct._id));
-    // dispatch(saveProductToDb(newProduct));
+    if (data.quantity) {
+      const product = allProducts.find(product => product.name === filteredProducts);
+      const updateQuantity = product?.quantity - kg;
+      const newProduct = { ...product, quantity: updateQuantity }
+      console.log(newProduct);
+      dispatch(upadateProductToDb(newProduct));
+    }
 
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Product Purchased successfully!!",
+      title: "Product Processing to sell!!",
       showConfirmButton: true,
     }).then((result) => {
       if (result.isConfirmed) {
