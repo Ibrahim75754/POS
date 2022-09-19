@@ -11,7 +11,7 @@ const CustomerInvoice = () => {
     const [orders, setOrders] = React.useState([]);
     const { id } = useParams()
     useEffect(() => {
-        fetch(`https://smart-shop-pos.herokuapp.com/orders/${id}`)
+        fetch(`http://localhost:5000/orders/${id}`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
@@ -45,7 +45,6 @@ const CustomerInvoice = () => {
 
                             <Typography sx={{ textAlign: "left" }} variant="body1">Phone Number: {orders.customerPhone}</Typography>
 
-                            <Typography sx={{ textAlign: "left" }} variant="body1">Address: {orders.address}</Typography>
                         </Box>
                     </Grid>
                     <Grid item xs={6} >
@@ -86,7 +85,7 @@ const CustomerInvoice = () => {
                                             1            </TableCell>
                                         <TableCell align="center">{orders.product}</TableCell>
                                         <TableCell align="center">BDT {orders.price}</TableCell>
-                                        <TableCell align="center">{orders.quantity}</TableCell>
+                                        <TableCell align="center">{orders.quantity}  {orders.unit}</TableCell>
                                         <TableCell align="right">BDT {orders.price * orders.quantity}</TableCell>
 
 

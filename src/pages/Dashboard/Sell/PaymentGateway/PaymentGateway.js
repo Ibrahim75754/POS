@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import styles from "./PaymentGateway.module.css";
-import { Box, Typography, Button } from "@mui/material";
-import StripePayment from "../../PaymentGateway/Stripe/StripePayment/StripePayment";
-import Select from "@mui/material/Select";
+import { Box, Button, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import stripeImg from "../../../../assets/images/stripe.PNG";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
+import stripeImg from "../../../../assets/images/stripe.PNG";
+import StripePayment from "../../PaymentGateway/Stripe/StripePayment/StripePayment";
+import styles from "./PaymentGateway.module.css";
 
 const PaymentGateway = () => {
   const [mode, setMode] = React.useState("");
@@ -19,7 +19,7 @@ const PaymentGateway = () => {
   };
 
   useEffect(() => {
-    fetch(`https://smart-shop-pos.herokuapp.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data[data.length - 1]));
   }, []);
@@ -31,7 +31,7 @@ const PaymentGateway = () => {
   const handleUpdateStatus = () => {
     const updated = { payment: "paid" };
 
-    const url = `https://smart-shop-pos.herokuapp.com/orders/${_id}`;
+    const url = `http://localhost:5000/orders/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: { "content-type": "application/json" },

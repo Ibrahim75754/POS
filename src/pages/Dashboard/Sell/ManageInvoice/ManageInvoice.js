@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
+import { css } from "@emotion/react";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import Delete from "@mui/icons-material/Delete";
+import MenuIcon from "@mui/icons-material/Menu";
+import PreviewIcon from '@mui/icons-material/Preview';
+import { Button, Container } from "@mui/material";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import TablePagination from "@mui/material/TablePagination";
-import { Button, Container } from "@mui/material";
-import PreviewIcon from '@mui/icons-material/Preview';
-import Delete from "@mui/icons-material/Delete";
-import AssignmentIcon from "@mui/icons-material/Assignment";
-import FadeLoader from "react-spinners/FadeLoader";
-import styles from "./ManageInvoice.module.css";
-import MenuIcon from "@mui/icons-material/Menu";
-import { NavLink } from "react-router-dom";
-import { css } from "@emotion/react";
-import Swal from "sweetalert2";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadInvoices, deleteInvoice } from "../../../../store/invoice";
+import { NavLink } from "react-router-dom";
+import FadeLoader from "react-spinners/FadeLoader";
+import Swal from "sweetalert2";
+import { deleteInvoice, loadInvoices } from "../../../../store/invoice";
+import styles from "./ManageInvoice.module.css";
 
 
 const override = css`
@@ -62,7 +62,7 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {invoice._id}
         </TableCell>
-        <TableCell align="center">{invoice.name}</TableCell>
+
         <TableCell align="center">{invoice.customerPhone}</TableCell>
         <TableCell align="center">{invoice.date}</TableCell>
         <TableCell align="center">BDT {invoice.grandTotal}</TableCell>
@@ -149,9 +149,7 @@ const ManageInvoice = () => {
                 <TableCell align="center" className={`${styles.tableCell}`}>
                   Order ID
                 </TableCell>
-                <TableCell align="center" className={`${styles.tableCell}`}>
-                  Customer Name
-                </TableCell>
+
                 <TableCell align="center" className={`${styles.tableCell}`}>
                   Customer Phone
                 </TableCell>

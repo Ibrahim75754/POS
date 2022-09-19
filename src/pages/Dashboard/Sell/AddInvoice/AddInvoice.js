@@ -79,7 +79,7 @@ const AddInvoice = () => {
     }
     return false;
   });
-
+  console.log(productNames)
   //me
   // const product = allProducts.find(product => product.name === filteredProducts);
   // const newProduct = { ...product, quantity: quantity - quantity }
