@@ -160,7 +160,7 @@ export const selectedStoreProduct = (id) =>
 
 export const updateStoreProduct = (id, data) =>
   apiCallBegan({
-    url: `/stores/${id}`,
+    url: `/stores/update/${id}`,
     data,
     method: "put",
     onSuccess: setSingleStoreProduct.type,

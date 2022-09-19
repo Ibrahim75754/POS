@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { loadCategories } from '../../../store/category';
-import { loadStoreProducts, saveProductToDb, selectedStoreProduct } from '../../../store/products';
+import { loadStoreProducts, saveProductToDb, selectedStoreProduct, updateStoreProduct } from '../../../store/products';
 import styles from './AddProduct.module.css';
 
 
@@ -53,13 +53,27 @@ const AddProduct = () => {
         formData.append('description', description);
         formData.append('img', img[0]);
 
+
+
+
         dispatch(saveProductToDb(formData));
         Swal.fire("Success", "New Product Added for Sell", "success");
-        // dispatch(update)
 
         setSelectPd('--- select product ---');
 
         reset();
+
+
+        if (quantity) {
+            const newQuantity = singleProduct.quantity - quantity;
+            const updateStock = new FormData();
+
+            updateStock.append('quantity', newQuantity);
+            console.log(updateStock)
+            dispatch(updateStoreProduct(singleProduct._id, updateStock));
+        }
+
+
     };
 
     return (

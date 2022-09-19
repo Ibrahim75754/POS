@@ -61,6 +61,7 @@ const AddInvoice = () => {
   const allProducts = useSelector(
     (state) => state.entities.products.allProduct
   );
+  console.log(allProducts)
 
   // Load customers from Database
   useEffect(() => {
@@ -84,23 +85,23 @@ const AddInvoice = () => {
   // const newProduct = { ...product, quantity: quantity - quantity }
   // console.log(newProduct)
 
-  // const handleUpdate = () => {
-  const product = allProducts.find(product => product.name === filteredProducts);
-  const updateQuantity = product?.quantity - kg;
-  const newProduct = { ...product, quantity: updateQuantity }
-  console.log(newProduct);
-  //   fetch(`https://smart-shop-pos.herokuapp.com/products/${newProduct._id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     },
-  //     body: JSON.stringify(newProduct)
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
+  const handleUpdate = () => {
+    const product = allProducts.find(product => product.name === filteredProducts);
+    const updateQuantity = product?.quantity - kg;
+    const newProduct = { ...product, quantity: updateQuantity }
+    console.log(newProduct);
+    //   fetch(`https://smart-shop-pos.herokuapp.com/products/${newProduct._id}`, {
+    //     method: 'PUT',
+    //     headers: {
+    //       'content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(newProduct)
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
 
-  //     })
-  // }
+    //     })
+  }
 
 
 
