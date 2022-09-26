@@ -26,7 +26,7 @@ const DashboardHome = (props) => {
 
 
   const drawer = (
-    <div style={{ background: "#fff" }}>
+    <div style={{ background: "#003366", height: "100%" }}>
       <NavLink
         to="/dashboard"
         style={{ cursor: "pointer", textDecoration: "none" }}

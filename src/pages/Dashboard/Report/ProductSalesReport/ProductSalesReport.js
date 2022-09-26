@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { Button, Collapse, Container, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,13 +9,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import { Button, Collapse, Container, TextField } from "@mui/material";
-import AssignmentIcon from "@mui/icons-material/Assignment";
+import React, { useEffect } from "react";
 import styles from "./ProductSalesReport.module.css";
 
-function Row(props) {
-  const { employee: product } = props;
+function Row({ product }) {
   return (
     <React.Fragment>
       <TableRow
@@ -21,13 +20,12 @@ function Row(props) {
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
         <TableCell component="th" scope="row">
-          {product.salesDate}
+          {product.date}
         </TableCell>
-        <TableCell align="left">{product.name}</TableCell>
-        <TableCell align="left">{product.category}</TableCell>
-        <TableCell align="left">{product.category}</TableCell>
-        <TableCell align="right">{product.salePrice}</TableCell>
-        <TableCell align="right">{100}</TableCell>
+        <TableCell align="left">{product.product}</TableCell>
+        <TableCell align="left">{product.customerPhone}</TableCell>
+        <TableCell align="right">{product.price}</TableCell>
+        <TableCell align="right">{product.grandTotal}</TableCell>
       </TableRow>
     </React.Fragment>
   );
@@ -40,7 +38,7 @@ const ProductSalesReport = () => {
   const [startDate, setStartDate] = React.useState("")
   const [endDate, setEndDate] = React.useState("")
   useEffect(() => {
-    fetch("https://zahidhasan2806.github.io/productData/products.json")
+    fetch("http://localhost:5000/orders")
       .then(res => res.json())
       .then(data => {
 
@@ -50,13 +48,13 @@ const ProductSalesReport = () => {
   }, []);
   const handleProductSearch = (event) => {
     event.preventDefault()
-    const matchedProduct = allProducts.filter(product => (product.salesDate >= startDate && product.salesDate <= endDate)
+    const matchedProduct = allProducts.filter(product => (product.date >= startDate && product.date <= endDate)
     );
     setProductDisplayed(matchedProduct);
   };
   let total = 0;
   productDisplayed.forEach(item => {
-    total = total + item.salePrice
+    total = total + parseInt(item.grandTotal)
   })
   return (
     <Container sx={{ width: "100%", mb: 5 }}>
@@ -118,26 +116,23 @@ const ProductSalesReport = () => {
                   Product Name
                 </TableCell>
                 <TableCell align="left" className={`${styles.tableCell}`}>
-                  Category
+                  Customer Phone
                 </TableCell>
-                <TableCell align="left" className={`${styles.tableCell}`}>
-                  Customer Name
-                </TableCell>
-                <TableCell align="center" className={`${styles.tableCell}`}>
+                <TableCell align="right" className={`${styles.tableCell}`}>
                   Rate
                 </TableCell>
-                <TableCell align="center" className={`${styles.tableCell}`}>
+                <TableCell align="right" className={`${styles.tableCell}`}>
                   Total Amount
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {productDisplayed.map((employee) => (
-                <Row key={employee._id} employee={employee} />
+              {productDisplayed.map((product) => (
+                <Row key={product._id} product={product} />
               ))}
               <TableRow>
-                <TableCell colSpan={5} align="right" sx={{ borderRight: 1 }}>
-                  Total Purchase:
+                <TableCell colSpan={4} align="right" sx={{ borderRight: 1 }}>
+                  Total sell:
                 </TableCell>
                 <TableCell align="right">BDT {total} </TableCell>
               </TableRow>

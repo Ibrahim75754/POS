@@ -666,7 +666,7 @@ const AddInvoice = () => {
                         p: 1,
                       }}
                     >
-                      Change Amount:
+                      Due Amount:
                     </TableCell>
                     <TableCell
                       align="center"

@@ -80,7 +80,8 @@ const HeaderTwo = () => {
         >
           <Box sx={{ textAlign: "start" }}>
             <h4>Welcome Back! Admin</h4>
-            <p>You have <span className="text-white">{notification.length}</span> new events! Check it out!</p>
+            <p>You have <span className="text-white">{notification.length}
+            </span> new events! Check it out!</p>
           </Box>
         </Grid>
         <Grid
