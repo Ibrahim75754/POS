@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import styles from "./Login.module.css";
-import { Button, Form } from "react-bootstrap";
-import logo from "../../assets/images/logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { css } from "@emotion/react";
 import { faLock, faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { css } from "@emotion/react";
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import FadeLoader from "react-spinners/FadeLoader";
+import logo from "../../assets/images/logo.png";
+import useAuth from "../../hooks/useAuth";
+import styles from "./Login.module.css";
 
 const override = css`
   display: block;
@@ -84,7 +84,7 @@ const Login = () => {
             type="email"
             placeholder="Your Email"
             className={`${styles.inputFields}`}
-            defaultValue="admin@ssp.com"
+            defaultValue="admin@admin.com"
             name="email"
             {...register("email", { required: true })}
           />

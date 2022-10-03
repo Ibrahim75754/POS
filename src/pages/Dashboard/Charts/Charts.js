@@ -1,8 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import styles from "./Charts.module.css";
 
 const Charts = () => {
+  const [salesProducts, setSalesProducts] = React.useState([]);
+  const [purchaseProducts, setPurchaseProducts] = React.useState([]);
+
+  useEffect(() => {
+    fetch("https://pos-server-nine.vercel.app/orders")
+      .then(res => res.json())
+      .then(data => {
+        setSalesProducts(data)
+      })
+  }, []);
+
+  useEffect(() => {
+    fetch("https://pos-server-nine.vercel.app/stores")
+      .then(res => res.json())
+      .then(data => {
+        setPurchaseProducts(data)
+      })
+  }, []);
+
+  let purchaseTotal = 0;
+  purchaseProducts.forEach(item => {
+    purchaseTotal = purchaseTotal + parseInt(item.grandTotal)
+  })
+
+  let salesTotal = 0;
+  salesProducts.forEach(item => {
+    salesTotal = salesTotal + parseInt(item.grandTotal)
+  })
+
+  let profit = salesTotal - 5000;
+
+
+
+
+
   const [pieChart, setPieChart] = useState({
     series: [760300, 944079, 604079],
     options: {
@@ -166,15 +201,15 @@ const Charts = () => {
                   </tr>
                   <tr>
                     <th className={`${styles.tableStyle}`}>Total Sales</th>
-                    <td className={`${styles.tableStyle} `}>$ 7260300</td>
+                    <td className={`${styles.tableStyle} `}>$ {salesTotal}</td>
                   </tr>
                   <tr>
                     <th className={`${styles.tableStyle}`}>Total Purchase</th>
-                    <td className={`${styles.tableStyle}`}>$ 99004079</td>
+                    <td className={`${styles.tableStyle}`}>$ {purchaseTotal}</td>
                   </tr>
                   <tr>
                     <th className={`${styles.tableStyle}`}>Total Profit</th>
-                    <td className={`${styles.tableStyle}`}>$ 904079</td>
+                    <td className={`${styles.tableStyle}`}>$ {profit}</td>
                   </tr>
                 </table>
               </div>
