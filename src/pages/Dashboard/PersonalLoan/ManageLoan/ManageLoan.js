@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { Delete } from "@mui/icons-material";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { Button, Container } from "@mui/material";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import TablePagination from "@mui/material/TablePagination";
-import { Button, Container } from "@mui/material";
-import AssignmentIcon from "@mui/icons-material/Assignment";
+import React, { useEffect, useState } from "react";
 import users from "../../../../assets/data/users.json";
 import styles from "./ManageLoan.module.css";
-import { Delete } from "@mui/icons-material";
 // import HowToRegSharpIcon from '@mui/icons-material/HowToRegSharp';
 import Swal from "sweetalert2";
 
@@ -93,7 +93,7 @@ const ManageLoan = () => {
     setPage(newPage);
   };
   useEffect(() => {
-    fetch('http://localhost:5000/loans')
+    fetch('https://pos-server-nine.vercel.app/loans')
       .then(res => res.json())
       .then(data => setLoans(data))
   }, [])

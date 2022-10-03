@@ -38,7 +38,7 @@ const ProductSalesReport = () => {
   const [startDate, setStartDate] = React.useState("")
   const [endDate, setEndDate] = React.useState("")
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://pos-server-nine.vercel.app/orders")
       .then(res => res.json())
       .then(data => {
 

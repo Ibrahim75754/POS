@@ -17,7 +17,8 @@ const api =
         try {
           const response = await axios.request({
             // baseURL: "https://smart-shop-pos.herokuapp.com",
-            baseURL: "http://localhost:5000",
+            baseURL: "https://pos-server-nine.vercel.app",
+            // baseURL: "https://pos-server-nine.vercel.app",
             url,
             method,
             data,

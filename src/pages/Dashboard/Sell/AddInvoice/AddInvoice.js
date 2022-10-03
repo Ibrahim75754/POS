@@ -95,26 +95,32 @@ const AddInvoice = () => {
     //Send form data to Server
     dispatch(saveInvoiceToDB(data));
 
+    // Swal.fire({
+    //   position: "center",
+    //   icon: "success",
+    //   title: "Product Processing to sell!!",
+    //   showConfirmButton: true,
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+
+
+    //   }
+    // });
+
+
     if (data.quantity) {
       const product = allProducts.find(product => product.name === filteredProducts);
       const updateQuantity = product?.quantity - kg;
       const newProduct = { ...product, quantity: updateQuantity }
       console.log(newProduct);
       dispatch(upadateProductToDb(newProduct));
+
+
     }
-
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Product Processing to sell!!",
-      showConfirmButton: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.href = "/payment-gateway";
-
-      }
-    });
+    window.location.href = "/payment-gateway";
     reset();
+
+
   };
 
   return (
@@ -673,7 +679,7 @@ const AddInvoice = () => {
                       sx={{ borderRight: "1px solid rgba(224, 224, 224, 1)" }}
                     >
                       <input
-                        {...register("changeAmount", { required: true })}
+                        {...register("changeAmount",)}
                         type="number"
                         placeholder="0"
                         value={paidAmount - grandTotal}

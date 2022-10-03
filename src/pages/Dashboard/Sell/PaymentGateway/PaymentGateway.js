@@ -19,7 +19,7 @@ const PaymentGateway = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://pos-server-nine.vercel.app/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data[data.length - 1]));
   }, []);
@@ -31,7 +31,7 @@ const PaymentGateway = () => {
   const handleUpdateStatus = () => {
     const updated = { payment: "paid" };
 
-    const url = `http://localhost:5000/orders/${_id}`;
+    const url = `https://pos-server-nine.vercel.app/orders/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: { "content-type": "application/json" },
